@@ -16,9 +16,9 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: 12.x
+    - run: npm install
+    - name: Upload the kitty!
+      run: node pixel.js $USERNAME $PASSWORD pixel.jpg `git rev-parse --short HEAD`
       env:
         USERNAME: ${{ secrets.USERNAME }}
         PASSWORD: ${{ secrets.PASSWORD }}
-    - run: |
-        npm install
-        node pixel.js $USERNAME $PASSWORD pixel.jpg `git rev-parse --short HEAD`
