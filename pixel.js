@@ -50,6 +50,7 @@ async function main() {
     await page.waitForNavigation()
   } catch (error) {
     console.error(error)
+    console.log(await page.screenshot({encoding: 'base64'}))
     throw new Error('Log in error/timeout: Wrong credentials maybe?')
   }
 
