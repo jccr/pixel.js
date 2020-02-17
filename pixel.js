@@ -102,6 +102,7 @@ async function main() {
   await page.waitForNavigation()
 
   console.log('Done!')
+  console.log(await page.screenshot({encoding: 'base64'}))
   await browser.close()
 }
 
