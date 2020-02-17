@@ -4,8 +4,7 @@
   "description": "cat in the shell",
   "main": "pixel.js",
   "dependencies": {
-    "playwright": "^0.11.1",
-    "puppeteer": "2.1.1"
+    "puppeteer": "2.0.0"
   },
   "devDependencies": {},
   "scripts": {
