@@ -7,7 +7,6 @@ const iPhoneSE = playwright.devices['iPhone SE']
 
 const args = process.argv.slice(2);
 
-
 ; (async () => {
   const browser = await playwright[args[0]].launch({ headless: true });
   const context = await browser.newContext({
@@ -21,7 +20,7 @@ const args = process.argv.slice(2);
 
   console.log('Type username')
   await page.type("input[name=username]", args[1])
-  
+
   console.log('Type password')
   await page.type("input[name=password]", args[2])
 
@@ -53,7 +52,7 @@ const args = process.argv.slice(2);
   await page.waitFor('[style*="blob:https://www.instagram.com"]')
 
   await page.screenshot({ path: 'debug/next.png' })
-  
+
   console.log('Click next')
   await page.click('text="Next"')
 
@@ -61,7 +60,7 @@ const args = process.argv.slice(2);
   await page.waitFor('[alt="Preview of photo to be uploaded"]')
 
   await page.screenshot({ path: 'debug/share.png' })
-  
+
   console.log('Click share')
   await page.click('text="Share"')
 })()
