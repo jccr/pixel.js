@@ -4,6 +4,8 @@ const iPhone = puppeteer.devices['iPhone SE']
 
 const args = process.argv.slice(2)
 
+const DEBUG = process.env.DEBUG
+
 const escapeXpathString = str => {
   const splitQuotes = str.replace(/'/g, `', "'", '`)
   return `concat('${splitQuotes}', '')`
@@ -50,7 +52,6 @@ async function main() {
     await page.waitForNavigation()
   } catch (error) {
     console.error(error)
-    console.log(await page.screenshot({encoding: 'base64'}))
     throw new Error('Log in error/timeout: Wrong credentials maybe?')
   }
 
@@ -100,15 +101,17 @@ async function main() {
 
   console.log('Wait for navigation')
   await page.waitForNavigation()
+
+  console.log('Wait 10s for post to finish')
   await page.waitFor(10000)
 
   console.log('Done!')
-  console.log(await page.screenshot({encoding: 'base64'}))
   await browser.close()
 }
 
 main().catch(async error => {
   console.error(error)
+  if (DEBUG) console.log(await page.screenshot({encoding: 'base64'}))
   await browser.close()
   process.exit(1)
 })
