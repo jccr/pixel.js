@@ -89,6 +89,11 @@ async function main() {
   console.log('Wait for post preview')
   await page.waitFor('[alt="Preview of photo to be uploaded"]')
 
+  if (args[3]) {
+    console.log('Type caption')
+    await page.type('textarea[aria-label="Write a caption…"]', args[3])
+  }
+
   console.log('Click share')
   await clickByText(page, 'Share', 'button')
 
