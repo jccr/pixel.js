@@ -1,0 +1,24 @@
+name: Pixel
+
+on: 
+  push:
+    branches: 
+    - master
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: 12.x
+      env:
+        USERNAME: ${{ secrets.USERNAME }}
+        PASSWORD: ${{ secrets.PASSWORD }}
+    - run: |
+        npm install
+        node pixel.js $USERNAME $PASSWORD pixel.jpg `git rev-parse --short HEAD`
