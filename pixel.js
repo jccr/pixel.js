@@ -100,6 +100,7 @@ async function main() {
 
   console.log('Wait for navigation')
   await page.waitForNavigation()
+  await page.waitFor(10000)
 
   console.log('Done!')
   console.log(await page.screenshot({encoding: 'base64'}))
