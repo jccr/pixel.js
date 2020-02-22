@@ -18,7 +18,7 @@ jobs:
         node-version: 12.x
     - run: npm install
     - name: Upload the kitty!
-      run: node pixel.js $USERNAME $PASSWORD pixel.jpg "`git show -s --format='%s #%h'`"
+      run: node pixel.js $USERNAME $PASSWORD pixel.jpg "`git show -s --format='%s \#%h'`"
       env:
         USERNAME: ${{ secrets.USERNAME }}
         PASSWORD: ${{ secrets.PASSWORD }}
